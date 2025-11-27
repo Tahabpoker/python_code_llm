@@ -14,7 +14,7 @@ Using **EleutherAI’s Pythia-70M**, I built a custom training workflow that lev
 - **Dataset:** CodeSearchNet Python (Cleaned & formatted)  
 - **Techniques:** QLoRA (4-bit quantization + LoRA), PEFT  
 - **Libraries:** `PyTorch`, `Transformers`, `Accelerate`, `bitsandbytes`  
-- **Environment:** WSL2 + CUDA on NVIDIA RTX 3050 (4GB)
+- **Environment:** WSL2 + CUDA
 
 ## Key Highlights
 - **Data Engineering:** Converted raw Python code into strict **Signature → Implementation** prompt-completion pairs for structured code learning.  
