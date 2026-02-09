@@ -1,4 +1,4 @@
-# Pythia-70M Python Fine-Tuner
+# "qwen2.5_coder_7b_lora" Python Fine-Tuner
 
 **Training an LLM on an RTX 3050 (4GB VRAM): From 20 days (CPU) to 7 hours.**
 
@@ -10,7 +10,7 @@ The goal was simple: **How far can we push a model on a 4GB GPU?**
 Using **EleutherAI’s Pythia-70M**, I built a custom training workflow that leverages 4-bit quantization and LoRA adapters to fit a code-completion model entirely into the memory of a laptop GPU—without sacrificing training stability.
 
 ## The Stack
-- **Model:** [EleutherAI/pythia-70m](https://huggingface.co/EleutherAI/pythia-70m)  
+- **Model:** ["qwen2.5_coder_7b_lora"](https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct)  
 - **Dataset:** CodeSearchNet Python (Cleaned & formatted)  
 - **Techniques:** QLoRA (4-bit quantization + LoRA), PEFT  
 - **Libraries:** `PyTorch`, `Transformers`, `Accelerate`, `bitsandbytes`  
