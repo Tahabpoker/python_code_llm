@@ -3,23 +3,21 @@
 **Training an LLM on an RTX 3050 (4GB VRAM): From 20 days (CPU) to 7 hours.**
 
 ## About The Project
-This repository documents my journey engineering an efficient end-to-end fine-tuning pipeline for small language models on highly constrained consumer hardware.
+This repository contains an efficient end-to-end fine-tuning pipeline for the Qwen2.5-Coder-7B language model on consumer hardware.
 
-The goal was simple: **How far can we push a model on a 4GB GPU?**
-
-Using **EleutherAI’s Pythia-70M**, I built a custom training workflow that leverages 4-bit quantization and LoRA adapters to fit a code-completion model entirely into the memory of a laptop GPU—without sacrificing training stability.
+The goal is to fine-tune a state-of-the-art coding model using 4-bit quantization and LoRA adapters to efficiently leverage available GPU VRAM.
 
 ## The Stack
-- **Model:** ["qwen2.5_coder_7b_lora"](https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct)  
-- **Dataset:** CodeSearchNet Python (Cleaned & formatted)  
+- **Model:** [Qwen2.5-Coder-7B-Instruct](https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct)  
+- **Dataset:** [Python Code Instructions (18k, Alpaca format)](https://huggingface.co/datasets/iamtarun/python_code_instructions_18k_alpaca)  
 - **Techniques:** QLoRA (4-bit quantization + LoRA), PEFT  
-- **Libraries:** `PyTorch`, `Transformers`, `Accelerate`, `bitsandbytes`  
+- **Libraries:** `PyTorch`, `Transformers`, `Accelerate`, `bitsandbytes`, `datasets`  
 - **Environment:** WSL2 + CUDA
 
 ## Key Highlights
-- **Data Engineering:** Converted raw Python code into strict **Signature → Implementation** prompt-completion pairs for structured code learning.  
-- **Memory Optimization:** Used `bitsandbytes` for efficient 4-bit QLoRA training to minimize VRAM footprint.  
-- **Performance:** Reduced estimated training time from **~20 days (CPU)** to **~7 hours (GPU)** using batching, gradient accumulation, and quantization.
+- **Modular Architecture:** Separated concerns with dedicated modules: `config.py` for settings, `model_utils.py` for model loading, `dataset_utils.py` for data handling.  
+- **Memory Optimization:** Uses `bitsandbytes` for efficient 4-bit QLoRA training to minimize VRAM footprint.  
+- **Easy Training:** Streamlined training pipeline orchestrated by `train.py` with built-in logging and checkpointing.
 
 ---
 
