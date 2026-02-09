@@ -1,6 +1,6 @@
 # "qwen2.5_coder_7b_lora" Python Fine-Tuner
 
-**Training an LLM on an RTX 3050 (4GB VRAM): From 20 days (CPU) to 7 hours.**
+**Efficient fine-tuning of Qwen2.5-Coder-7B using QLoRA on consumer hardware.**
 
 ## About The Project
 This repository contains an efficient end-to-end fine-tuning pipeline for the Qwen2.5-Coder-7B language model on consumer hardware.
@@ -34,32 +34,29 @@ cd python_code_llm
 pip install -r requirement.txt
 ```
 
-### 3. Prepare the Dataset
-Run the processing scripts to clean and format the CodeSearchNet Python data:
+### 3. Train the Model
+This script automatically loads the dataset, sets up LoRA adapters and 4-bit quantization, and begins training:
 
 ```bash
-# Step 1: Download and clean the dataset
-python build_clean_code_ds.py
-
-# Step 2: Format into prompt-completion pairs
-python make_prompt_completion.py
+python train.py
 ```
 
-### 4. Train the Model
-This script automatically sets up LoRA adapters and 4-bit quantization:
+Training logs and checkpoints will be saved to the output directory specified in `config.py`.
 
-```bash
-python main.py
-```
-
-Training logs and checkpoints will be saved locally.
-
-### 5. Run Inference
-Test the model’s ability to generate Python code:
+### 4. Run Inference
+Test the fine-tuned model's ability to generate Python code:
 
 ```bash
 python model_test.py
 ```
+
+### Project Files Reference
+- **`config.py`** - Central configuration (model, dataset, hyperparameters)
+- **`train.py`** - Main training pipeline  
+- **`model_utils.py`** - Model loading and configuration utilities  
+- **`dataset_utils.py`** - Dataset loading and preprocessing utilities  
+- **`model_test.py`** - Inference script for testing the trained model  
+- **`requirement.txt`** - Python dependencies
 
 ---
 
